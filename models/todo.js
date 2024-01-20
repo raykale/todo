@@ -3,11 +3,17 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 const todoSchema = new mongoose.Schema({
-    title: String, required,
-    description: String,
-    completed: Boolean, default: false,
-    created_at: Date, default: Date.now
+    title: { type: string, require: true },
+    description: { type: String, required: true },
+    complete: {type: Boolean, require: true }
+}, {
+    timestamps: true
 })
+//     title: String, required,
+//     description: String,
+//     completed: Boolean, default: false,
+//     created_at: Date, default: Date.now
+// })
 
 
 todoSchema.pre('save', async function(next) {
