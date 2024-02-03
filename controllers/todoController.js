@@ -1,6 +1,5 @@
 const Todo = require('../models/todo')
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+
 
 /*
 200 - good response
@@ -34,7 +33,7 @@ exports.create = async function create (req, res) {
     const todo = await Todo.create(req.body)
     res.status(200).json(todo)
     } catch (error) {
-      res.status(400).jsom({ msg: error.message })
+      res.status(400).json({ msg: error.message })
     }
 
 }
@@ -54,7 +53,7 @@ exports.update = async function update (req, res) {
 exports.destroy = async function destroy (req, res) {
 //delete an existing todo
     try {
-        await Todo.findOneAndDelete({ _id: req, res.params.id
+        const deleted = await Todo.findOneAndDelete({ _id: req, res.params.id
         })
         res.status(200).json({ msg: `The todo with the Id of ${req.params.td} was deleted from the MongoDB database, no further action neccessary`})
     } catch (error) {

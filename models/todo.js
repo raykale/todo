@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 const todoSchema = new mongoose.Schema({
-    title: { type: string, require: true },
+    title: { type: String, require: true },
     description: { type: String, required: true },
     complete: {type: Boolean, require: true }
 }, {
@@ -28,7 +28,7 @@ todoSchema.methods.generateAuthToken = async function() {
     return token
   }
   
-const Todo = mongoose.model('User', todoSchema)
+const Todo = mongoose.model('Todo', todoSchema)
 
 module.exports = Todo
 
